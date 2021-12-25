@@ -19,7 +19,8 @@
         "content_script.js"
       ],
       "css": [
-        "css/comfortable-sakai.css"
+        "css/comfortable-sakai.css",
+        "css/panmatrix.css"
       ],
       "matches": ["https://panda.ecs.kyoto-u.ac.jp/*"]
     }

@@ -15,6 +15,7 @@ import {
   useCache,
 } from "./utils";
 import { Settings, loadSettings } from "./settings";
+import { createPanMatrixBtn } from "./panmatrix";
 
 export const baseURL = getBaseURL();
 export const VERSION = chrome.runtime.getManifest().version;
@@ -109,6 +110,7 @@ async function loadCourseIDList() {
 
 async function main() {
   if (isLoggedIn()) {
+    createPanMatrixBtn();
     createMiniSakaiBtn();
     await loadConfigs();
     await loadCourseIDList();

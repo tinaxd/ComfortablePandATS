@@ -1,0 +1,11 @@
+.cs-panmatrix-btn {
+    background-color: transparent;
+}
+
+.cs-panmatrix-body.cs-inactive {
+    display: none;
+}
+
+.cs-panmatrix-body {
+    color: blue;
+}
