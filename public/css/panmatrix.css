@@ -7,13 +7,13 @@
 }
 
 .cs-panmatrix-body {
-    color: blue;
+    color: black;
     background-color: white;
     z-index: 2000;
 }
 
 .cs-panmatrix-table, .cs-panmatrix-table th, .cs-panmatrix-table td {
-    background-color: lightgray;
+    background-color: whitesmoke;
     border: 1px solid;
     border-collapse: collapse;
     text-align: center;
