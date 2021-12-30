@@ -18,3 +18,7 @@
     border-collapse: collapse;
     text-align: center;
 }
+
+.cs-panmatrix-body .cs-clickable {
+    cursor: pointer;
+}

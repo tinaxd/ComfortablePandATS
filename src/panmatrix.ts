@@ -60,7 +60,15 @@ function onPanMatrixClick(targetPopup: HTMLDivElement) {
   }
 }
 
-const regexPattern = new RegExp(/^\[.*期([月火水木金])([１２３４５])\].*$/);
+function regexHeader() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+  const semester = 3 <= month && month < 9 ? "前期" : "後期";
+  return year + semester;
+}
+
+const regexPattern = new RegExp("^\\[" + regexHeader() + "([月火水木金])([１２３４５])\\].*$");
 
 const dayMap = new Map<string, number>();
 dayMap.set("月", 0);
@@ -147,6 +155,10 @@ function makeTimetable(courses: (CourseSiteInfo | null)[][]): HTMLTableElement {
       const td = document.createElement("td");
       if (course !== null) {
         td.textContent = course.courseName as string;
+        td.addEventListener("click", (ev) => {
+          window.location.href = "https://panda.ecs.kyoto-u.ac.jp/portal/site-reset/" + course.courseID;
+        });
+        td.classList.add("cs-clickable");
       }
       tr.appendChild(td);
     }
