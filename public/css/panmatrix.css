@@ -12,10 +12,9 @@
     z-index: 2000;
 }
 
-.cs-panmatrix-table {
+.cs-panmatrix-table, .cs-panmatrix-table th, .cs-panmatrix-table td {
     background-color: lightgray;
-}
-
-.cs-panmatrix-table-header {
+    border: 1px solid;
+    border-collapse: collapse;
     text-align: center;
 }

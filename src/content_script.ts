@@ -110,8 +110,6 @@ async function loadCourseIDList() {
 
 async function main() {
   if (isLoggedIn()) {
-    createPanMatrixBtn();
-    createMiniSakaiBtn();
     await loadConfigs();
     await loadCourseIDList();
     mergedAssignmentList = await loadAndMergeAssignmentList(
@@ -122,6 +120,9 @@ async function main() {
     await addBookmarkedCourseSites(baseURL);
     await displayMiniSakai(mergedAssignmentList, courseIDList);
     createNavBarNotification(courseIDList, mergedAssignmentList);
+
+    createPanMatrixBtn();
+    createMiniSakaiBtn();
 
     miniSakaiReady();
     updateIsReadFlag(mergedAssignmentListNoMemo);
