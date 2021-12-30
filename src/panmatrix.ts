@@ -1,4 +1,5 @@
 import { CourseSiteInfo } from "./model";
+import { courseIDList } from "./content_script";
 
 export function createPanMatrixBtn(): void {
   const topbar = document.getElementById("mastLogin");
@@ -23,6 +24,16 @@ export function createPanMatrixBtn(): void {
 function buildPopup(): HTMLDivElement {
   const popup = document.createElement('div');
 
+  const courses = courseIDList.map(course => {
+    if (course.courseName == null) return null;
+    const dayAndPeriod = extractDayFromLectureName(course.courseName);
+    if (dayAndPeriod == null) return null;
+    return {
+      day: dayAndPeriod.day,
+      period: dayAndPeriod.period,
+      data: course
+    };
+  })
   popup.appendChild(makeTimetable(
     [
       [null, null, null, null, null],
@@ -57,20 +68,25 @@ function extractDayFromLectureName(lectureName: string): {
   throw "todo";
 }
 
+function arrangeLectures<T>(data: {day: number, period: number, data: T}[]): T[][] {
+  return [];
+}
+
 function makeTimetable(courses: (CourseSiteInfo | null)[][]): HTMLTableElement {
   const top = document.createElement('table');
+  top.classList.add("cs-panmatrix-table");
 
-  const th = document.createElement('th');
+  const tr = document.createElement('tr');
   // TODO: i18n
   const days = ["月", "火", "水", "木", "金"];
   for (let i=0; i<6; i++) {
-    const td = document.createElement('td');
+    const th = document.createElement('th');
     if (i != 0) {
-      td.textContent = days[i-1];
+      th.textContent = days[i-1];
     }
-    th.appendChild(td);
+    tr.appendChild(th);
   }
-  top.appendChild(th);
+  top.appendChild(tr);
 
   for (let period=0; period<5; period++) {
     const tr = document.createElement('tr');

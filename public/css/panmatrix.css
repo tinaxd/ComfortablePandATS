@@ -8,4 +8,14 @@
 
 .cs-panmatrix-body {
     color: blue;
+    background-color: white;
+    z-index: 2000;
+}
+
+.cs-panmatrix-table {
+    background-color: lightgray;
+}
+
+.cs-panmatrix-table-header {
+    text-align: center;
 }
